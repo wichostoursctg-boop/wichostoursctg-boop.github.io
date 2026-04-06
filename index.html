@@ -146,6 +146,35 @@
             text-decoration: none;
             transition: transform 0.3s ease;
         }
+        .review {
+    background: white;
+    padding: 15px;
+    border-radius: 10px;
+    margin: 10px 0;
+    box-shadow: 0 2px 10px rgba(0,0,0,0.05);
+}
+
+.stars {
+    color: gold;
+    font-size: 18px;
+}
+
+.review-form {
+    background: #fff;
+    padding: 20px;
+    border-radius: 12px;
+    margin-top: 20px;
+}
+
+#star-rating span {
+    font-size: 25px;
+    cursor: pointer;
+    opacity: 0.5;
+}
+
+#star-rating span.active {
+    opacity: 1;
+}
 
         .whatsapp-float:hover { transform: scale(1.1); }
 
@@ -213,11 +242,52 @@
         <button onclick="cotizar('Traslado Internacional Van')">Cotizar ahora</button>
     </div>
     
-    <h2>⭐ Opiniones</h2>
+   <h2>⭐ Opiniones de nuestros clientes</h2>
 
-<div class="testimonial">⭐⭐⭐⭐⭐ Excelente servicio, muy puntual</div>
-<div class="testimonial">⭐⭐⭐⭐⭐ Muy recomendado, todo organizado</div>
+<div id="reviews-container">
 
+<!-- Reseñas existentes -->
+<div class="review">
+    <strong>Juan Pérez</strong>
+    <div class="stars">⭐⭐⭐⭐⭐</div>
+    <p>Excelente servicio, muy puntuales y confiables. Lo recomiendo 100%.</p>
+</div>
+
+<div class="review">
+    <strong>María Gómez</strong>
+    <div class="stars">⭐⭐⭐⭐⭐</div>
+    <p>El tour a Playa Blanca fue increíble, todo muy bien organizado.</p>
+</div>
+
+<div class="review">
+    <strong>Carlos Ramírez</strong>
+    <div class="stars">⭐⭐⭐⭐</div>
+    <p>Muy buen servicio, el transporte cómodo y el conductor muy amable.</p>
+</div>
+
+</div>
+
+<!-- FORMULARIO -->
+<div class="review-form">
+    <h3>Deja tu opinión</h3>
+
+    <input type="text" id="review-name" placeholder="Tu nombre">
+
+    <textarea id="review-text" placeholder="Escribe tu opinión..." style="width:100%;padding:10px;border-radius:8px;margin-top:10px;"></textarea>
+
+    <label>Calificación:</label>
+    <div id="star-rating">
+        <span onclick="setRating(1)">⭐</span>
+        <span onclick="setRating(2)">⭐</span>
+        <span onclick="setRating(3)">⭐</span>
+        <span onclick="setRating(4)">⭐</span>
+        <span onclick="setRating(5)">⭐</span>
+    </div>
+
+    <input type="file" id="review-photo" accept="image/*">
+
+    <button onclick="addReview()">Publicar opinión</button>
+</div>
     <h2>🚐 Nuestra Flota</h2>
     <p style="margin-left: 10px; color: #666; font-size: 0.9em;">Vehículos modernos y cómodos para tu viaje.</p>
 
@@ -392,6 +462,55 @@
 
     abrirWS(mensaje);
 
+}
+
+    let rating = 0;
+
+function setRating(value) {
+    rating = value;
+    const stars = document.querySelectorAll("#star-rating span");
+
+    stars.forEach((star, index) => {
+        star.classList.toggle("active", index < value);
+    });
+}
+
+function addReview() {
+    const name = document.getElementById("review-name").value;
+    const text = document.getElementById("review-text").value;
+    const photoInput = document.getElementById("review-photo");
+
+    if (!name || !text || rating === 0) {
+        alert("Completa todos los campos");
+        return;
+    }
+
+    const stars = "⭐".repeat(rating);
+
+    const reviewDiv = document.createElement("div");
+    reviewDiv.className = "review";
+
+    let imgHTML = "";
+
+    if (photoInput.files[0]) {
+        const url = URL.createObjectURL(photoInput.files[0]);
+        imgHTML = `<img src="${url}" style="width:100%;border-radius:10px;margin-top:10px;">`;
+    }
+
+    reviewDiv.innerHTML = `
+        <strong>${name}</strong>
+        <div class="stars">${stars}</div>
+        <p>${text}</p>
+        ${imgHTML}
+    `;
+
+    document.getElementById("reviews-container").prepend(reviewDiv);
+
+    // limpiar
+    document.getElementById("review-name").value = "";
+    document.getElementById("review-text").value = "";
+    document.getElementById("review-photo").value = "";
+    setRating(0);
 }
 </script>
 
