@@ -242,52 +242,7 @@
         <button onclick="cotizar('Traslado Internacional Van')">Cotizar ahora</button>
     </div>
     
-   <h2>⭐ Opiniones de nuestros clientes</h2>
-
-<div id="reviews-container">
-
-<!-- Reseñas existentes -->
-<div class="review">
-    <strong>Juan Pérez</strong>
-    <div class="stars">⭐⭐⭐⭐⭐</div>
-    <p>Excelente servicio, muy puntuales y confiables. Lo recomiendo 100%.</p>
-</div>
-
-<div class="review">
-    <strong>María Gómez</strong>
-    <div class="stars">⭐⭐⭐⭐⭐</div>
-    <p>El tour a Playa Blanca fue increíble, todo muy bien organizado.</p>
-</div>
-
-<div class="review">
-    <strong>Carlos Ramírez</strong>
-    <div class="stars">⭐⭐⭐⭐</div>
-    <p>Muy buen servicio, el transporte cómodo y el conductor muy amable.</p>
-</div>
-
-</div>
-
-<!-- FORMULARIO -->
-<div class="review-form">
-    <h3>Deja tu opinión</h3>
-
-    <input type="text" id="review-name" placeholder="Tu nombre">
-
-    <textarea id="review-text" placeholder="Escribe tu opinión..." style="width:100%;padding:10px;border-radius:8px;margin-top:10px;"></textarea>
-
-    <label>Calificación:</label>
-    <div id="star-rating">
-        <span onclick="setRating(1)">⭐</span>
-        <span onclick="setRating(2)">⭐</span>
-        <span onclick="setRating(3)">⭐</span>
-        <span onclick="setRating(4)">⭐</span>
-        <span onclick="setRating(5)">⭐</span>
-    </div>
-
-    <input type="file" id="review-photo" accept="image/*">
-
-    <button onclick="addReview()">Publicar opinión</button>
-</div>
+ 
     <h2>🚐 Nuestra Flota</h2>
     <p style="margin-left: 10px; color: #666; font-size: 0.9em;">Vehículos modernos y cómodos para tu viaje.</p>
 
@@ -512,6 +467,52 @@ function addReview() {
     document.getElementById("review-photo").value = "";
     setRating(0);
 }
+      <h2>⭐ Opiniones de nuestros clientes</h2>
+
+<div id="reviews-container">
+
+<!-- Reseñas existentes -->
+<div class="review">
+    <strong>Juan Pérez</strong>
+    <div class="stars">⭐⭐⭐⭐⭐</div>
+    <p>Excelente servicio, muy puntuales y confiables. Lo recomiendo 100%.</p>
+</div>
+
+<div class="review">
+    <strong>María Gómez</strong>
+    <div class="stars">⭐⭐⭐⭐⭐</div>
+    <p>El tour a Playa Blanca fue increíble, todo muy bien organizado.</p>
+</div>
+
+<div class="review">
+    <strong>Carlos Ramírez</strong>
+    <div class="stars">⭐⭐⭐⭐</div>
+    <p>Muy buen servicio, el transporte cómodo y el conductor muy amable.</p>
+</div>
+
+</div>
+
+<!-- FORMULARIO -->
+<div class="review-form">
+    <h3>Deja tu opinión</h3>
+
+    <input type="text" id="review-name" placeholder="Tu nombre">
+
+    <textarea id="review-text" placeholder="Escribe tu opinión..." style="width:100%;padding:10px;border-radius:8px;margin-top:10px;"></textarea>
+
+    <label>Calificación:</label>
+    <div id="star-rating">
+        <span onclick="setRating(1)">⭐</span>
+        <span onclick="setRating(2)">⭐</span>
+        <span onclick="setRating(3)">⭐</span>
+        <span onclick="setRating(4)">⭐</span>
+        <span onclick="setRating(5)">⭐</span>
+    </div>
+
+    <input type="file" id="review-photo" accept="image/*">
+
+    <button onclick="addReview()">Publicar opinión</button>
+</div>
 </script>
 
 </body>
