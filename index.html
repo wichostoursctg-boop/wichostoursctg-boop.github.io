@@ -1,4 +1,4 @@
- <!DOCTYPE html>
+  <!DOCTYPE html>
 <html lang="es">
 <head>
 
@@ -516,9 +516,69 @@ async function mostrarReseñas() {
         container.appendChild(div);
     });
 }
-
 window.onload = mostrarReseñas;
+</script>
+
+<script>
+const numeroWhatsApp = "573043139135";
+
+function abrirWhatsApp(mensaje) {
+    const url = `https://wa.me/${numeroWhatsApp}?text=${encodeURIComponent(mensaje)}`;
+    window.open(url, "_blank");
+}
+
+// BOTÓN COTIZAR GENERAL
+function cotizar(servicio) {
+    const mensaje = `Hola, estoy interesado en: ${servicio}. Quisiera más información.`;
+    abrirWhatsApp(mensaje);
+}
+
+// BOTÓN TOURS (con guía opcional)
+function cotizarTour(nombre, idCheckbox) {
+    const guia = document.getElementById(idCheckbox)?.checked ? " con guía" : "";
+    const mensaje = `Hola, quiero reservar el tour: ${nombre}${guia}.`;
+    abrirWhatsApp(mensaje);
+}
+
+// BOTÓN DESTINO PERSONALIZADO
+function cotizarPersonalizado() {
+    const destino = document.getElementById("destino-otro").value;
+
+    if (!destino) {
+        alert("Escribe un destino");
+        return;
+    }
+
+    const mensaje = `Hola, quiero cotizar un viaje hacia: ${destino}.`;
+    abrirWhatsApp(mensaje);
+}
+
+// BOTÓN AGENDAR
+function enviarFormulario() {
+    const nombre = document.getElementById("form-nombre").value;
+    const telefono = document.getElementById("form-whatsapp").value;
+    const fecha = document.getElementById("form-fecha").value;
+    const hora = document.getElementById("form-hora").value;
+
+    if (!nombre || !telefono || !fecha || !hora) {
+        alert("Completa todos los campos");
+        return;
+    }
+
+    const mensaje = `Hola, quiero agendar un viaje:
+Nombre: ${nombre}
+Teléfono: ${telefono}
+Fecha: ${fecha}
+Hora: ${hora}`;
+
+    abrirWhatsApp(mensaje);
+}
+
+// BOTONES DESTINO RÁPIDO (CORREGIDO)
+function seleccionarDestino(destino) {
+    document.getElementById("destino-otro").value = destino;
+}
 </script>
     
 </body>
-</html>
+</html> 
