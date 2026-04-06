@@ -1,419 +1,7 @@
-<!DOCTYPE html>
-<html lang="es">
-<head>
-
-    <meta charset="UTF-8">
-    <meta name="viewport" content="width=device-width, initial-scale=1.0">
-    <title>Family Vacations Tours | Traslados y Viajes</title>
-    <style>
-        :root {
-            --azul: #00aaff;
-            --azul-oscuro: #0088cc;
-            --naranja: #ff9900;
-            --gris-fondo: #f4f4f4;
-            --verde-exito: #28a745;
-            --whatsapp: #25D366;
-        }
-
-        body {
-            font-family: 'Segoe UI', Arial, sans-serif;
-            margin: 0;
-            background: var(--gris-fondo);
-            color: #333;
-            padding-bottom: 50px; /* Espacio para el footer */
-        }
-
-        /* Botones de Destinos */
-        .destino-btn {
-            background: #f1f1f1;
-            padding: 8px 15px;
-            border-radius: 20px;
-            margin: 5px;
-            display: inline-block;
-            cursor: pointer;
-            transition: 0.3s;
-            border: 1px solid #ddd;
-            user-select: none;
-        }
-
-        .destino-btn:hover {
-            background: var(--whatsapp);
-            color: white;
-            border-color: var(--whatsapp);
-        }
-
-        /* Estructura */
-        header.hero {
-            position: relative;
-            height: 400px;
-            overflow: hidden;
-            text-align: center;
-            color: white;
-        }
-
-        .hero img {
-            width: 100%;
-            height: 100%;
-            object-fit: cover;
-        }
-
-        .overlay {
-            position: absolute;
-            top: 0;
-            left: 0;
-            width: 100%;
-            height: 100%;
-            background: rgba(0,0,0,0.5);
-            display: flex;
-            flex-direction: column;
-            justify-content: center;
-            align-items: center;
-        }
-
-        section {
-            padding: 20px;
-            max-width: 900px;
-            margin: auto;
-        }
-
-        h2 {
-            color: #444;
-            border-left: 5px solid var(--azul);
-            padding-left: 10px;
-            margin-top: 40px;
-        }
-
-        .card {
-            background: white;
-            padding: 20px;
-            margin: 15px 0;
-            border-radius: 12px;
-            box-shadow: 0 4px 15px rgba(0,0,0,0.05);
-            transition: transform 0.3s;
-        }
-
-        .card:hover { transform: translateY(-3px); }
-
-        .precio {
-            font-size: 1.3em;
-            color: var(--verde-exito);
-            font-weight: bold;
-            margin: 5px 0;
-        }
-
-        /* Botones Generales */
-        button {
-            background: var(--azul);
-            color: white;
-            border: none;
-            padding: 12px;
-            border-radius: 8px;
-            font-size: 16px;
-            font-weight: bold;
-            cursor: pointer;
-            width: 100%;
-            transition: 0.3s;
-        }
-
-        button:hover { background: var(--azul-oscuro); }
-        .btn-naranja { background: var(--naranja); }
-        .btn-naranja:hover { background: #e68a00; }
-
-        input {
-            width: 100%;
-            padding: 12px;
-            margin: 8px 0;
-            border: 1px solid #ccc;
-            border-radius: 8px;
-            box-sizing: border-box;
-        }
-
-        /* WhatsApp Flotante Arreglado */
-        .whatsapp-float {
-            position: fixed;
-            bottom: 25px;
-            right: 25px;
-            background: var(--whatsapp);
-            color: white;
-            width: 60px;
-            height: 60px;
-            border-radius: 50%;
-            text-align: center;
-            font-size: 30px;
-            line-height: 60px;
-            box-shadow: 0 4px 15px rgba(0,0,0,0.3);
-            z-index: 10000;
-            text-decoration: none;
-            transition: transform 0.3s ease;
-        }
-        .review {
-    background: white;
-    padding: 15px;
-    border-radius: 10px;
-    margin: 10px 0;
-    box-shadow: 0 2px 10px rgba(0,0,0,0.05);
-}
-
-.stars {
-    color: gold;
-    font-size: 18px;
-}
-
-.review-form {
-    background: #fff;
-    padding: 20px;
-    border-radius: 12px;
-    margin-top: 20px;
-}
-
-#star-rating span {
-    font-size: 25px;
-    cursor: pointer;
-    opacity: 0.5;
-}
-
-#star-rating span.active {
-    opacity: 1;
-}
-
-        .whatsapp-float:hover { transform: scale(1.1); }
-
-        .fuera-ciudad { border: 2px solid var(--naranja); background: #fffdfa; }
-        .tag-incluye { display: inline-block; background: #e8f5e9; color: #2e7d32; padding: 4px 10px; border-radius: 4px; font-size: 0.85em; margin-bottom: 8px; }
-    </style>
-</head>
-<body>
-
-<header class="hero">
-    <img src="imagenes/portada.jpg" alt="Family Vacations Tours">
-    <div class="overlay">
-        <h1>Family Vacations Tours</h1>
-        <p>Los mejores planes turísticos y traslados</p>
-        <button onclick="cotizar('Información general')" style="margin-top:15px; width:200px;">Cotizar ahora</button>
-    </div>
-</header>
-
-
-<section>
-
-<h2>Planes turísticos</h2>
-
-<ul>
-
-<li>Islas del Rosario</li>
-<li>Playa Blanca</li>
-<li>City Tour Cartagena</li>
-<li>Viajes a Santa Marta</li>
-<li>Pregunta Por cualquier otro destino!</li>
-</ul>
-
-</section>
-
-<h2>Galería</h2>
-
-<img src="imagenes/portada.jpg" width="400">
-
-</section>
-
-</section>
-  <h2>✈️ Traslados Aeropuerto - Hotel</h2>
-    
-    <div class="card">
-        <h3>Nacional (Auto 4 pax) 🚙</h3>
-       
-        <button onclick="cotizar('Traslado Nacional Auto')">Cotizar ahora</button>
-    </div>
-
-    <div class="card">
-        <h3>Nacional (Van 10 pax) 🚐</h3>
-        
-        <button onclick="cotizar('Traslado Nacional Van')">Cotizar ahora</button>
-    </div>
-
-    <div class="card">
-        <h3>Internacional (Auto 4 pax) 🚙</h3>
-       
-        <button onclick="cotizar('Traslado Internacional Auto')">Cotizar ahora</button>
-    </div>
-
-    <div class="card">
-        <h3>Internacional (Van 10 pax) 🚐</h3>
-      
-        <button onclick="cotizar('Traslado Internacional Van')">Cotizar ahora</button>
-    </div>
-    
- 
-    <h2>🚐 Nuestra Flota</h2>
-    <p style="margin-left: 10px; color: #666; font-size: 0.9em;">Vehículos modernos y cómodos para tu viaje.</p>
-
-    <div style="display: flex; overflow-x: auto; gap: 15px; padding: 10px; scroll-snap-type: x mandatory; -webkit-overflow-scrolling: touch;">
-        <div class="card" style="min-width: 260px; padding: 0; flex-shrink: 0; scroll-snap-align: start;">
-            <img src="https://i.ibb.co/qF5WsMHL/image.png" style="width: 100%; height: 180px; object-fit: cover; border-radius: 12px 12px 0 0;">
-            <div style="padding: 15px;"><h4>Microbús de Turismo</h4><p style="font-size: 0.8em; color: #777;">Ideal para grupos grandes.</p></div>
-        </div>
-        <div class="card" style="min-width: 260px; padding: 0; flex-shrink: 0; scroll-snap-align: start;">
-            <img src="https://i.ibb.co/wNrjt4kw/image.png" style="width: 100%; height: 180px; object-fit: cover; border-radius: 12px 12px 0 0;">
-            <div style="padding: 15px;"><h4>Van Especializada</h4><p style="font-size: 0.8em; color: #777;">Confort y aire acondicionado.</p></div>
-        </div>
-        <div class="card" style="min-width: 260px; padding: 0; flex-shrink: 0; scroll-snap-align: start;">
-            <img src="https://i.ibb.co/MxnM6kTj/image.png" style="width: 100%; height: 180px; object-fit: cover; border-radius: 12px 12px 0 0;">
-            <div style="padding: 15px;"><h4>Transporte Grupal</h4><p style="font-size: 0.8em; color: #777;">Seguridad en cada trayecto.</p></div>
-        </div>
-        <div class="card" style="min-width: 260px; padding: 0; flex-shrink: 0; scroll-snap-align: start;">
-            <img src="https://i.ibb.co/0jfKz13Z/image.png" style="width: 100%; height: 180px; object-fit: cover; border-radius: 12px 12px 0 0;">
-            <div style="padding: 15px;"><h4>Campero 4x4</h4><p style="font-size: 0.8em; color: #777;">Perfecto para traslados privados.</p></div>
-        </div>
-        <div class="card" style="min-width: 260px; padding: 0; flex-shrink: 0; scroll-snap-align: start;">
-            <img src="https://i.ibb.co/yrmQgKB/image.png" style="width: 100%; height: 180px; object-fit: cover; border-radius: 12px 12px 0 0;">
-            <div style="padding: 15px;"><h4>Van Ejecutiva</h4><p style="font-size: 0.8em; color: #777;">Servicio VIP y discreción.</p></div>
-        </div>
-    </div>
-
-    
-    <h2>🛣️ Viajes Fuera de la Ciudad</h2>
-    <div class="card fuera-ciudad">
-        <h3>Servicio Intermunicipal Privado</h3>
-        <p>Selecciona tu destino rápido:</p>
-        <div style="margin-bottom: 15px;">
-            <span onclick="seleccionarDestino('Cartagena')" class="destino-btn">📍 Cartagena</span>
-            <span onclick="seleccionarDestino('Santa Marta')" class="destino-btn">📍 Santa Marta</span>
-            <span onclick="seleccionarDestino('Barranquilla')" class="destino-btn">📍 Barranquilla</span>
-            <span onclick="seleccionarDestino('Mompox')" class="destino-btn">📍 Mompox</span>
-        </div>
-        <input type="text" id="destino-otro" placeholder="O escribe otro destino aquí">
-        <button class="btn-naranja" onclick="cotizarPersonalizado()">📲 Consultar tarifa</button>
-    </div>
-
-
-
-<h2>🏝️ Planes de Playa y Tours</h2>
-
-<div class="card" style="padding:0; overflow:hidden;">
-    <img src="https://i.ibb.co/Lh5vjRQZ/image.png" style="width:100%; height:200px; object-fit:cover;">
-    <div style="padding:20px;">
-        <h3>Playa Blanca 🏖️</h3>
-        
-        <div class="tag-incluye">✓ Transporte + Almuerzo + Instalaciones</div>
-        <div style="margin: 15px 0; background: #e8f5e9; padding: 10px; border-radius: 8px; display: flex; justify-content: center; align-items: center; border: 1px solid #c8e6c9;">
-            <label style="display:flex; align-items:center; cursor:pointer; font-size: 13px; font-weight: bold; color: #2e7d32;">
-                <input type="checkbox" id="guia-playa" style="margin-right:10px; width:18px; height:18px;"> 🚩 Agregar Guía <span style="font-weight:normal; margin-left:4px;">(Costo adicional)</span>
-            </label>
-        </div>
-        <button onclick="cotizarTour('Playa Blanca', 'guia-playa')">Reservar Plan</button>
-    </div>
-</div>
-
-<div class="card" style="padding:0; overflow:hidden;">
-    <img src="https://i.ibb.co/20mgB57f/image.png" style="width:100%; height:200px; object-fit:cover;">
-    <div style="padding:20px;">
-        <h3>Volcán del Totumo 🌋</h3>
-        <p class="precio">Precio a convenir</p>
-        <p class="detalles">Consulta disponibilidad y tarifas personalizadas según tu grupo.</p>
-        <div style="margin: 15px 0; background: #e8f5e9; padding: 10px; border-radius: 8px; display: flex; justify-content: center; align-items: center; border: 1px solid #c8e6c9;">
-            <label style="display:flex; align-items:center; cursor:pointer; font-size: 13px; font-weight: bold; color: #2e7d32;">
-                <input type="checkbox" id="guia-totumo" style="margin-right:10px; width:18px; height:18px;"> 🚩 Agregar Guía <span style="font-weight:normal; margin-left:4px;">(Costo adicional)</span>
-            </label>
-        </div>
-        <button onclick="cotizarTour('Volcán del Totumo', 'guia-totumo')">Cotizar ahora</button>
-    </div>
-</div>
-
-<div class="card" style="padding:0; overflow:hidden;">
-    <img src="https://i.ibb.co/3yWJQ49Y/image.png" style="width:100%; height:200px; object-fit:cover;">
-    <div style="padding:20px;">
-        <h3>Islas Privadas 🛥️</h3>
-        
-        <div class="tag-incluye">✓ Transporte Ida y Vuelta + Almuerzo Especial + Uso De Las Instalaciones</div>
-        <p class="detalles"><small>⚠️ No incluye impuestos de muelle.</small></p>
-        <div style="margin: 15px 0; background: #e8f5e9; padding: 10px; border-radius: 8px; display: flex; justify-content: center; align-items: center; border: 1px solid #c8e6c9;">
-            <label style="display:flex; align-items:center; cursor:pointer; font-size: 13px; font-weight: bold; color: #2e7d32;">
-                <input type="checkbox" id="guia-islas" style="margin-right:10px; width:18px; height:18px;"> 🚩 Agregar Guía <span style="font-weight:normal; margin-left:4px;">(Costo adicional)</span>
-            </label>
-        </div>
-        <button onclick="cotizarTour('Islas Privadas', 'guia-islas')">Reservar Plan</button>
-    </div>
-</div>
-
-
-    <div class="card" style="background: #222; color: white;">
-        <h2>📅 Agendar Viaje </h2>
-          <div class="pago-info" style="background: #333; color: #00aaff; border-color: #444;">
-        💳 <span>Aceptamos pagos con <b>datáfono</b>. Precios sujetos a impuestos del gobierno.</span>
-    </div>
-
-    <input id="form-nombre" type="text" placeholder="Tu nombre">
-    <input id="form-whatsapp" type="text" placeholder="Número de WhatsApp">
-    <input id="form-fecha" type="date">
-    <input id="form-hora" type="time">
-    <button style="margin-top: 10px; background: var(--azul);" onclick="enviarFormulario()">Enviar Solicitud</button>
-    </div>
-
-     <h2>⭐ Opiniones de nuestros clientes</h2>
-
-<div id="reviews-container">
-
-<!-- Reseñas existentes -->
-<div class="review">
-    <strong>Juan Pérez</strong>
-    <div class="stars">⭐⭐⭐⭐⭐</div>
-    <p>Excelente servicio, muy puntuales y confiables. Lo recomiendo 100%.</p>
-</div>
-
-<div class="review">
-    <strong>María Gómez</strong>
-    <div class="stars">⭐⭐⭐⭐⭐</div>
-    <p>El tour a Playa Blanca fue increíble, todo muy bien organizado.</p>
-</div>
-
-<div class="review">
-    <strong>Carlos Ramírez</strong>
-    <div class="stars">⭐⭐⭐⭐</div>
-    <p>Muy buen servicio, el transporte cómodo y el conductor muy amable.</p>
-</div>
-
-</div>
-
-<!-- FORMULARIO -->
-<div class="review-form">
-    <h3>Deja tu opinión</h3>
-
-    <input type="text" id="review-name" placeholder="Tu nombre">
-
-    <textarea id="review-text" placeholder="Escribe tu opinión..." style="width:100%;padding:10px;border-radius:8px;margin-top:10px;"></textarea>
-
-    <label>Calificación:</label>
-    <div id="star-rating">
-        <span onclick="setRating(1)">⭐</span>
-        <span onclick="setRating(2)">⭐</span>
-        <span onclick="setRating(3)">⭐</span>
-        <span onclick="setRating(4)">⭐</span>
-        <span onclick="setRating(5)">⭐</span>
-    </div>
-
-    <input type="file" id="review-photo" accept="image/*">
-
-    <button onclick="addReview()">Publicar opinión</button>
-</div>
-
-</section>
-
-<footer class="footer-info" style="text-align:center; padding: 20px; color: #777;">
-    Family Vacations Tours ©️ 2026 - Todos los derechos reservados
-</footer>
-
-<a href="https://wa.me/573043139135" target="_blank" class="whatsapp-float">
-    <span style="display:flex; justify-content:center; align-items:center; height:100%;">💬</span>
-</a>
-
-    <!-- Firebase -->
-<script src="https://www.gstatic.com/firebasejs/10.12.2/firebase-app.js"></script>
-<script src="https://www.gstatic.com/firebasejs/10.12.2/firebase-firestore.js"></script>
-
-<script>
-
-  
-import { initializeApp } from "firebase/app";
-
+<!-- Firebase -->
+<script type="module">
+import { initializeApp } from "https://www.gstatic.com/firebasejs/10.12.2/firebase-app.js";
+import { getFirestore, collection, addDoc, getDocs, query, orderBy } from "https://www.gstatic.com/firebasejs/10.12.2/firebase-firestore.js";
 
 const firebaseConfig = {
   apiKey: "AIzaSyApvPiO5tZbYHhVmjUVrytFJ846N3SfDrE",
@@ -424,71 +12,11 @@ const firebaseConfig = {
   appId: "1:251056102465:web:610c910c412d6f2064bac0"
 };
 
-
 const app = initializeApp(firebaseConfig);
+const db = getFirestore(app);
 
-    
-    const WHATSAPP_NUMBER = "573043139135";
 
-    // Función unificada para abrir WhatsApp
-    function abrirWS(mensaje) {
-        const url = `https://api.whatsapp.com/send?phone=${WHATSAPP_NUMBER}&text=${encodeURIComponent(mensaje)}`;
-        
-        // Intentamos abrir en pestaña nueva
-        const win = window.open(url, '_blank');
-        
-        // Si el navegador bloquea la ventana emergente, redirigimos en la misma
-        if (!win || win.closed || typeof win.closed == 'undefined') {
-            window.location.href = url;
-        }
-    }
-
-    function seleccionarDestino(destino) {
-        document.getElementById("destino-otro").value = destino;
-    }
-
-    function cotizar(servicio) {
-        const mensaje = "Hola! Me interesa el servicio de: " + servicio;
-        abrirWS(mensaje);
-    }
-
-    function cotizarPersonalizado() {
-        const destino = document.getElementById('destino-otro').value;
-        const destinoFinal = destino || "un destino fuera de la ciudad";
-        const mensaje = "Hola! Quisiera cotizar un viaje hacia: " + destinoFinal;
-        abrirWS(mensaje);
-    }
-
-    function enviarFormulario() {
-        const nombre = document.getElementById('form-nombre').value;
-        const tel = document.getElementById('form-whatsapp').value;
-        const fecha = document.getElementById('form-fecha').value;
-
-        if(!nombre || !tel) {
-            alert("Por favor completa nombre y teléfono");
-            return;
-        }
-
-        const mensaje = `RESERVA:\n👤 Nombre: ${nombre}\n📱 Tel: ${tel}\n📅 Fecha: ${fecha}`;
-        abrirWS(mensaje);
-    }
-    function cotizarTour(nombreTour, idGuia){
-
-    const incluyeGuia = document.getElementById(idGuia).checked;
-
-    let mensaje = "Hola! Me interesa el tour: " + nombreTour;
-
-    if(incluyeGuia){
-        mensaje += " con guía turística";
-    } else {
-        mensaje += " sin guía";
-    }
-
-    abrirWS(mensaje);
-
-}
-
-    let rating = 0;
+let rating = 0;
 
 function setRating(value) {
     rating = value;
@@ -498,6 +26,8 @@ function setRating(value) {
         star.classList.toggle("active", index < value);
     });
 }
+
+window.setRating = setRating;
 
 async function addReview() {
     const name = document.getElementById("review-name").value;
@@ -517,7 +47,7 @@ async function addReview() {
         reader.onload = async function(e) {
             photoBase64 = e.target.result;
 
-            await db.collection("reviews").add({
+            await addDoc(collection(db, "reviews"), {
                 name,
                 text,
                 rating,
@@ -530,7 +60,7 @@ async function addReview() {
 
         reader.readAsDataURL(photoInput.files[0]);
     } else {
-        await db.collection("reviews").add({
+        await addDoc(collection(db, "reviews"), {
             name,
             text,
             rating,
@@ -545,13 +75,16 @@ async function addReview() {
     document.getElementById("review-text").value = "";
     document.getElementById("review-photo").value = "";
     setRating(0);
-
 }
- async function mostrarReseñas() {
+
+window.addReview = addReview;
+
+async function mostrarReseñas() {
     const container = document.getElementById("reviews-container");
     container.innerHTML = "";
 
-    const snapshot = await db.collection("reviews").orderBy("fecha", "desc").get();
+    const q = query(collection(db, "reviews"), orderBy("fecha", "desc"));
+    const snapshot = await getDocs(q);
 
     snapshot.forEach(doc => {
         const r = doc.data();
@@ -570,12 +103,7 @@ async function addReview() {
 
         container.appendChild(div);
     });
-} 
+}
 
-    window.onload = mostrarReseñas;
-    
+window.onload = mostrarReseñas;
 </script>
-
-    
-</body>
-</html>
