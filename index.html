@@ -487,35 +487,61 @@ function addReview() {
         return;
     }
 
-    const stars = "⭐".repeat(rating);
+    const reader = new FileReader();
 
-    const reviewDiv = document.createElement("div");
-    reviewDiv.className = "review";
+    reader.onload = function(e) {
+        const review = {
+            name: name,
+            text: text,
+            rating: rating,
+            photo: photoInput.files[0] ? e.target.result : null
+        };
 
-    let imgHTML = "";
+        let reviews = JSON.parse(localStorage.getItem("reviews")) || [];
+        reviews.unshift(review);
+        localStorage.setItem("reviews", JSON.stringify(reviews));
+
+        mostrarReseñas();
+    };
 
     if (photoInput.files[0]) {
-        const url = URL.createObjectURL(photoInput.files[0]);
-        imgHTML = `<img src="${url}" style="width:100%;border-radius:10px;margin-top:10px;">`;
+        reader.readAsDataURL(photoInput.files[0]);
+    } else {
+        reader.onload({ target: { result: null } });
     }
 
-    reviewDiv.innerHTML = `
-        <strong>${name}</strong>
-        <div class="stars">${stars}</div>
-        <p>${text}</p>
-        ${imgHTML}
-    `;
-
-    document.getElementById("reviews-container").prepend(reviewDiv);
-
-    // limpiar
     document.getElementById("review-name").value = "";
     document.getElementById("review-text").value = "";
     document.getElementById("review-photo").value = "";
     setRating(0);
 }
-     
+    function mostrarReseñas() {
+    const container = document.getElementById("reviews-container");
+    container.innerHTML = "";
+
+    let reviews = JSON.parse(localStorage.getItem("reviews")) || [];
+
+    reviews.forEach(r => {
+        const div = document.createElement("div");
+        div.className = "review";
+
+        const stars = "⭐".repeat(r.rating);
+
+        div.innerHTML = `
+            <strong>${r.name}</strong>
+            <div class="stars">${stars}</div>
+            <p>${r.text}</p>
+            ${r.photo ? `<img src="${r.photo}" style="width:100%;border-radius:10px;margin-top:10px;">` : ""}
+        `;
+
+        container.appendChild(div);
+    });
+}
+
+    window.onload = mostrarReseñas;
+    
 </script>
 
+    
 </body>
 </html>
