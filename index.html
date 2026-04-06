@@ -405,7 +405,29 @@
     <span style="display:flex; justify-content:center; align-items:center; height:100%;">💬</span>
 </a>
 
+    <!-- Firebase -->
+<script src="https://www.gstatic.com/firebasejs/10.12.2/firebase-app.js"></script>
+<script src="https://www.gstatic.com/firebasejs/10.12.2/firebase-firestore.js"></script>
+
 <script>
+
+  
+import { initializeApp } from "firebase/app";
+
+
+const firebaseConfig = {
+  apiKey: "AIzaSyApvPiO5tZbYHhVmjUVrytFJ846N3SfDrE",
+  authDomain: "tour-cartagena.firebaseapp.com",
+  projectId: "tour-cartagena",
+  storageBucket: "tour-cartagena.firebasestorage.app",
+  messagingSenderId: "251056102465",
+  appId: "1:251056102465:web:610c910c412d6f2064bac0"
+};
+
+
+const app = initializeApp(firebaseConfig);
+
+    
     const WHATSAPP_NUMBER = "573043139135";
 
     // Función unificada para abrir WhatsApp
@@ -477,7 +499,7 @@ function setRating(value) {
     });
 }
 
-function addReview() {
+async function addReview() {
     const name = document.getElementById("review-name").value;
     const text = document.getElementById("review-text").value;
     const photoInput = document.getElementById("review-photo");
@@ -487,41 +509,53 @@ function addReview() {
         return;
     }
 
-    const reader = new FileReader();
-
-    reader.onload = function(e) {
-        const review = {
-            name: name,
-            text: text,
-            rating: rating,
-            photo: photoInput.files[0] ? e.target.result : null
-        };
-
-        let reviews = JSON.parse(localStorage.getItem("reviews")) || [];
-        reviews.unshift(review);
-        localStorage.setItem("reviews", JSON.stringify(reviews));
-
-        mostrarReseñas();
-    };
+    let photoBase64 = null;
 
     if (photoInput.files[0]) {
+        const reader = new FileReader();
+
+        reader.onload = async function(e) {
+            photoBase64 = e.target.result;
+
+            await db.collection("reviews").add({
+                name,
+                text,
+                rating,
+                photo: photoBase64,
+                fecha: new Date()
+            });
+
+            mostrarReseñas();
+        };
+
         reader.readAsDataURL(photoInput.files[0]);
     } else {
-        reader.onload({ target: { result: null } });
+        await db.collection("reviews").add({
+            name,
+            text,
+            rating,
+            photo: null,
+            fecha: new Date()
+        });
+
+        mostrarReseñas();
     }
 
     document.getElementById("review-name").value = "";
     document.getElementById("review-text").value = "";
     document.getElementById("review-photo").value = "";
     setRating(0);
+
 }
-    function mostrarReseñas() {
+ async function mostrarReseñas() {
     const container = document.getElementById("reviews-container");
     container.innerHTML = "";
 
-    let reviews = JSON.parse(localStorage.getItem("reviews")) || [];
+    const snapshot = await db.collection("reviews").orderBy("fecha", "desc").get();
 
-    reviews.forEach(r => {
+    snapshot.forEach(doc => {
+        const r = doc.data();
+
         const div = document.createElement("div");
         div.className = "review";
 
@@ -536,7 +570,7 @@ function addReview() {
 
         container.appendChild(div);
     });
-}
+} 
 
     window.onload = mostrarReseñas;
     
